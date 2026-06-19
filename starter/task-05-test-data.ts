@@ -30,16 +30,28 @@
  */
 
 // TODO: додай тип / add a type
-export const testCases = [
+type TestCase = {
+  id: number;
+  name: string;
+  status: "passed" | "failed" | "skipped";
+};
+
+export const testCases: TestCase[] = [
   { id: 1, name: "Login with valid credentials", status: "passed" },
   { id: 2, name: "Login with invalid password", status: "failed" },
   { id: 3, name: "Logout from dashboard", status: "passed" },
-  { id: 4, name: "Reset password flow", status: "skipped" },
+  { id: 4, name: "Reset password flow", status: "skipped" }
 ];
 
-export function countByStatus(cases, status) {
+export function countByStatus(cases: TestCase[], status: TestCase["status"]) : number {
   // TODO: реалізуй / implement
-  return 0;
+  let count = 0;
+  for (const testCase of cases) {
+    if (testCase.status === status) { 
+      count++;
+    }
+  }
+  return count;
 }
 
 export {};
